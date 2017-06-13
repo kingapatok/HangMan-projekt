@@ -19,7 +19,8 @@ namespace HangMan
                                         HangMan.Properties.Resources.HangMan7};
 
         private int wrongGuess = 0;
-
+        private string current = "";
+        private string copyCurrent = "";
         private string[] words;
         public Form2()
         {
@@ -36,7 +37,36 @@ namespace HangMan
                 string[] line = s.Split(delimiterChars);
                 words[index++] = line[1];
             }
-            int end = 0;
+          
+        }
+
+        private void setupWordChoice()
+        {
+            wrongGuess = 0;
+            hangImage.Image = hangImages[wrongGuess];
+            int guessIndex = (new Random()).Next(words.Length); 
+            current = words[guessIndex];
+
+            copyCurrent = "";
+            for (int index = 0; index < current.Length; index++)
+            {
+                copyCurrent += "_";
+            }
+            displayCopy();
+
+        }
+        private  void displayCopy()
+        {
+            lblShowWord.Text = "";
+            for (int index = 0; index < copyCurrent.Length; index++)
+            {
+                lblShowWord.Text += copyCurrent.Substring(index,1);
+                lblShowWord.Text += " ";
+            }
+        }
+        private void updateCopy(char guess)
+        {
+
         }
 
         private void guessClick(object sender, EventArgs e)
@@ -55,6 +85,7 @@ namespace HangMan
         private void hangImage_Click(object sender, EventArgs e)
         {
             loadwords();
+            setupWordChoice();
         }
     }
 }

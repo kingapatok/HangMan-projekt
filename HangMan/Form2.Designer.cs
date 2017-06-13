@@ -32,13 +32,14 @@
             this.cmdA = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lblResult = new System.Windows.Forms.Label();
+            this.lblShowWord = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.hangImage)).BeginInit();
             this.SuspendLayout();
             // 
             // hangImage
             // 
             this.hangImage.Image = global::HangMan.Properties.Resources.HangMan1;
-            this.hangImage.Location = new System.Drawing.Point(95, 2);
+            this.hangImage.Location = new System.Drawing.Point(95, -1);
             this.hangImage.Name = "hangImage";
             this.hangImage.Size = new System.Drawing.Size(231, 244);
             this.hangImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -76,11 +77,21 @@
             this.lblResult.Size = new System.Drawing.Size(0, 13);
             this.lblResult.TabIndex = 3;
             // 
+            // lblShowWord
+            // 
+            this.lblShowWord.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblShowWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblShowWord.Location = new System.Drawing.Point(42, 246);
+            this.lblShowWord.Name = "lblShowWord";
+            this.lblShowWord.Size = new System.Drawing.Size(296, 24);
+            this.lblShowWord.TabIndex = 4;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 358);
+            this.Controls.Add(this.lblShowWord);
             this.Controls.Add(this.lblResult);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmdA);
@@ -99,5 +110,6 @@
         private System.Windows.Forms.Button cmdA;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.Label lblShowWord;
     }
 }
