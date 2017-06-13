@@ -28,26 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.frmHangman = new System.Windows.Forms.PictureBox();
+            this.hangImage = new System.Windows.Forms.PictureBox();
             this.cmdA = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.frmHangman)).BeginInit();
+            this.lblResult = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.hangImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // frmHangman
+            // hangImage
             // 
-            this.frmHangman.Image = global::HangMan.Properties.Resources.HangMan1;
-            this.frmHangman.Location = new System.Drawing.Point(12, 12);
-            this.frmHangman.Name = "frmHangman";
-            this.frmHangman.Size = new System.Drawing.Size(231, 244);
-            this.frmHangman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.frmHangman.TabIndex = 0;
-            this.frmHangman.TabStop = false;
+            this.hangImage.Image = global::HangMan.Properties.Resources.HangMan1;
+            this.hangImage.Location = new System.Drawing.Point(95, 2);
+            this.hangImage.Name = "hangImage";
+            this.hangImage.Size = new System.Drawing.Size(231, 244);
+            this.hangImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hangImage.TabIndex = 0;
+            this.hangImage.TabStop = false;
+            this.hangImage.Click += new System.EventHandler(this.hangImage_Click);
             // 
             // cmdA
             // 
             this.cmdA.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.cmdA.Location = new System.Drawing.Point(249, 44);
+            this.cmdA.Location = new System.Drawing.Point(53, 273);
             this.cmdA.Name = "cmdA";
             this.cmdA.Size = new System.Drawing.Size(36, 32);
             this.cmdA.TabIndex = 1;
@@ -58,7 +60,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(291, 44);
+            this.button1.Location = new System.Drawing.Point(95, 273);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(36, 32);
             this.button1.TabIndex = 2;
@@ -66,25 +68,36 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.guessClick);
             // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(369, 18);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(0, 13);
+            this.lblResult.TabIndex = 3;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 358);
+            this.Controls.Add(this.lblResult);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmdA);
-            this.Controls.Add(this.frmHangman);
+            this.Controls.Add(this.hangImage);
             this.Name = "Form2";
             this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.frmHangman)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hangImage)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox frmHangman;
+        private System.Windows.Forms.PictureBox hangImage;
         private System.Windows.Forms.Button cmdA;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblResult;
     }
 }
