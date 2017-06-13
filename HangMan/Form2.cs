@@ -20,7 +20,7 @@ namespace HangMan
 
         private int wrongGuess = 0;
         private string current = "";
-        private string copyCurrent = "";
+        private string copyCurrent = "-";
         private string[] words;
         public Form2()
         {
@@ -29,7 +29,7 @@ namespace HangMan
         private void loadwords()
         { //załączenie listy słów
             char[] delimiterChars = {','};
-            string[] readText = File.ReadAllLines("słowa.txt");
+            string[] readText = File.ReadAllLines("słowa.csv");
             words = new string[readText.Length];
             int index = 0;
             foreach (string s in readText)
@@ -71,6 +71,28 @@ namespace HangMan
 
         private void guessClick(object sender, EventArgs e)
         {
+            Button choice = sender as Button;
+            choice.Enabled = false;
+            if (current.Contains(choice.Text))
+            {
+                char[] temp = copyCurrent.ToCharArray();
+                char[] find = current.ToCharArray();
+                char guessChar = choice.Text.ElementAt(0);
+                for (int index = 0; index < find.Length; index++)
+                {
+                    if (find[index] == guessChar)
+                    {
+                        temp[index] = guessChar;
+                    }
+                }
+                copyCurrent = new string(temp);
+                displayCopy();
+            }
+            else
+            {
+                wrongGuess++;
+            }
+
             wrongGuess++; //zmienia obrazek na kolejny
             if (wrongGuess < 7)
             {
@@ -79,6 +101,11 @@ namespace HangMan
             else
             {
                 lblResult.Text = "Przegrana";
+            }
+
+            if (copyCurrent.Equals(current))
+            {
+                lblResult.Text = "WYGRANA!";
             }
         }
 

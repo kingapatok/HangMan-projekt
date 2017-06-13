@@ -22,5 +22,10 @@ namespace HangMan
             Form2 f = new Form2();
             f.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
