@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -17,8 +12,8 @@ namespace HangMan
                                         HangMan.Properties.Resources.HangMan3, HangMan.Properties.Resources.HangMan4,
                                         HangMan.Properties.Resources.HangMan5, HangMan.Properties.Resources.HangMan6,
                                         HangMan.Properties.Resources.HangMan7};
-
-        private int wrongGuess = 0;
+        
+        private int wrongGuesses = 0;
         private string current = "";
         private string copyCurrent = "-";
         private string[] words;
@@ -27,28 +22,28 @@ namespace HangMan
             InitializeComponent();
         }
         private void loadwords()
-        { //załączenie listy słów
+        {   //załączenie listy słów
             char[] delimiterChars = {','};
-            string[] readText = File.ReadAllLines("słowa.csv");
+            string[] readText = File.ReadAllLines("słowa.txt");
             words = new string[readText.Length];
             int index = 0;
             foreach (string s in readText)
             {
                 string[] line = s.Split(delimiterChars);
-                words[index++] = line[1];
+                words[index++] = line[0];
             }
           
         }
 
         private void setupWordChoice()
-        {
-            wrongGuess = 0;
-            hangImage.Image = hangImages[wrongGuess];
-            int guessIndex = (new Random()).Next(words.Length); 
+        {   // zasada działania wyboru litery
+            wrongGuesses = 0;
+            hangImage.Image = hangImages[wrongGuesses];
+            int guessIndex = (new Random()).Next(words.Length);
             current = words[guessIndex];
 
             copyCurrent = "";
-            for (int index = 0; index < current.Length; index++)
+            for (int index = 0; index < current.Length; )
             {
                 copyCurrent += "_";
             }
@@ -72,9 +67,10 @@ namespace HangMan
         private void guessClick(object sender, EventArgs e)
         {
             Button choice = sender as Button;
-            choice.Enabled = false;
+            choice.Enabled =false;
             if (current.Contains(choice.Text))
             {
+                
                 char[] temp = copyCurrent.ToCharArray();
                 char[] find = current.ToCharArray();
                 char guessChar = choice.Text.ElementAt(0);
@@ -90,15 +86,15 @@ namespace HangMan
             }
             else
             {
-                wrongGuess++;
+                wrongGuesses++;
             }
 
-            wrongGuess++; //zmienia obrazek na kolejny
-            if (wrongGuess < 7)
+           // wrongGuesses++; //zmienia obrazek na kolejny
+            if (wrongGuesses < 7)
             {
-                hangImage.Image = hangImages[wrongGuess];
+                hangImage.Image = hangImages[wrongGuesses];
             }
-            else
+            else //komentuje rezultat
             {
                 lblResult.Text = "Przegrana";
             }
@@ -113,6 +109,12 @@ namespace HangMan
         {
             loadwords();
             setupWordChoice();
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+            Application.Exit() ;
+            
         }
     }
 }
