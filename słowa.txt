@@ -1,6 +1,12 @@
-1,kwiat,
-2,gepard,
-3,torebka,
-4,kontomierz,
-5,Polska,
+1,kwiat
+2,gepard
+3,torebka
+4,kontomierz
+5,maszynka
 6,matematyka
+7,całka
+8,różniczka
+9,politechnika
+10,telewizor
+11,walizka
+12,wiartarkowkrętarka
